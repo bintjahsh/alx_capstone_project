@@ -48,6 +48,8 @@ The main objectives are:
 <table>
 <tr>
 <td valign="top" width="50%">
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fpoh1cU9TL2G8UNc8plrHq6%2FTaska---Task-Management-Web-App%3Ftype%3Ddesign%26node-id%3D513%253A397%26mode%3Ddesign%26t%3DpOOnw7sbD7EenL29-1" allowfullscreen></iframe>
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fpoh1cU9TL2G8UNc8plrHq6%2FTaska---Task-Management-Web-App%3Ftype%3Ddesign%26node-id%3D527%253A662%26mode%3Ddesign%26t%3DpOOnw7sbD7EenL29-1" allowfullscreen></iframe>
 
 ![Flow Chart](./)</td>
 
@@ -79,7 +81,7 @@ The project in development is a task manager web app, which has the following ma
 
 ## Design of the prototype
 
-Here is the low fidelity prototype of the portfolio website:
+Here is the high fidelity prototype of the portfolio website:
 
 <table>
 <tr>
