@@ -1,0 +1,419 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Body */
+body {
+  font-family: Poppins, "Segoe UI", Tahoma, Geneva, Verdana,
+    sans-serif sans-serif;
+  background-color: #efefef;
+}
+
+/* Navigation */
+.logo img {
+  width: 90px;
+  height: 28px;
+}
+
+.nav-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #f9f9f9;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.navbar ul {
+  margin-top: 90px;
+}
+
+.navbar li {
+  margin-top: 25px;
+  margin-left: 12px;
+  list-style-type: none;
+}
+
+.navbar li a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+}
+
+nav .active {
+  background-color: #000000;
+  color: #f9f9f9;
+}
+
+/* Main */
+main {
+  margin-left: 250px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+
+#sortby optgroup {
+  background-color: #f9f9f9;
+}
+
+optgroup option:hover {
+  background-color: #fabb18;
+}
+
+/* buttons */
+.dark-btn {
+  background-color: #232323;
+  color: #efefef;
+  border: none;
+  font-size: 12px;
+}
+
+.light-btn {
+  background-color: #fabb18;
+  color: #232323;
+  border: none;
+  font-size: 12px;
+}
+
+.small-btn {
+  min-width: 28px;
+  height: 24px;
+  border-radius: 5px;
+  border: none;
+  padding: 12px;
+}
+
+.med-btn {
+  min-width: 40px;
+  height: 24px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.primary-btn {
+  width: 60px;
+  height: 32px;
+  border: none;
+  border-radius: 5px;
+}
+
+.task-action {
+  margin-right: 8px;
+  width: 60px;
+  height: 32px;
+  font-size: 12px;
+}
+
+.task-action:first-of-type {
+  margin-left: 8px;
+}
+
+.task-action:last-of-type {
+  margin-right: 0;
+}
+
+/*---Status bar---*/
+.status-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+  margin-right: 90px;
+  padding-top: 15px;
+}
+
+.user-profile img {
+  margin-left: 35px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.notification svg {
+  margin-left: 35px;
+  font-size: 180%;
+}
+
+.search-bar {
+  background-color: #fabb18;
+  border-radius: 10px;
+  padding-right: 12px;
+}
+
+.search-bar svg {
+  font-size: 80%;
+}
+
+.search-bar input {
+  width: 270px;
+  height: 40px;
+  background-color: #efefef;
+  border-radius: 10px 0 0 10px;
+  padding-left: 12px;
+  border: 1px solid #fabb18;
+}
+
+.search-bar input:focus {
+  border: 1px solid #fabb18;
+}
+
+/* ---Dashboard Heading--- */
+.dashboard-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 40px;
+  margin-top: 18px;
+}
+
+#textToday {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+#todayDate {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.newTaskShort {
+  display: flex;
+  width: 250px;
+  height: 48px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.newTaskShort p {
+  font-size: 16px;
+}
+
+a#new-task {
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 16px;
+}
+
+/* Card container group */
+.container-group {
+  margin-top: 35px;
+  margin-left: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.group-card {
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  padding: 12px;
+  border-radius: 15px;
+}
+
+.card-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.card-heading h2 {
+  font-size: 24px;
+  font-weight: 400;
+  flex-grow: 2;
+}
+
+.card-heading button,
+.card-heading select {
+  margin-right: 8px;
+  flex-grow: 1;
+}
+
+p.med-btn {
+  height: 16px;
+  font-size: 12px;
+  text-align: center;
+  align-self: center;
+}
+
+p.high {
+  color: #d70d0d;
+}
+
+p.medium {
+  color: #d77a0d;
+}
+
+p.normal {
+  color: #0d5dd7;
+}
+.task-list {
+  width: 100%;
+}
+#task-table tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+#task-table {
+  margin-top: 18px;
+}
+#task-table td:not([last-child]) {
+  margin-right: 8px;
+}
+#task-list td p {
+  flex-grow: 1;
+}
+
+#task-list td p.task-name {
+  font-size: 18px;
+  font-weight: 400;
+  flex-grow: 2;
+}
+
+#task-list td p.date-time {
+  font-size: 12px;
+  font-weight: 600;
+  color: #232323;
+}
+
+p.task-priority {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* NEW TASK  */
+
+.form-container {
+  margin-top: 25px;
+  background-color: #f9f9f9;
+  width: 60%;
+  padding: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 10px;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container form label {
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+.form-container form input:not([type="checkbox"]),
+.form-container form textarea,
+.form-container form select {
+  background-color: #efefef;
+  border: 1px solid #fabb18;
+  border-radius: 8px;
+  margin-top: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  text-align: left;
+}
+
+.form-container form input:not([type="checkbox"]) {
+  height: 32px;
+}
+
+.form-container form textarea {
+  padding-top: 8px;
+}
+
+.form-container form select {
+  width: 50%;
+  height: 32px;
+}
+
+.form-container button {
+  margin-top: 16px;
+  width: 120px;
+  height: 36px;
+  border: none;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Pending Tasks */
+.task-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.task-card {
+  max-width: 45%;
+  margin-top: 24px;
+  margin-right: 12px;
+  padding: 24px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+}
+
+.task-card h2 {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.task-card p {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.task-action {
+  margin-top: 12px;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+p.task-desc {
+  text-align: center;
+  overflow-wrap: normal;
+}
+/* footer */
+
+footer {
+  margin-left: 250px; /* Same as the width of the sidebar */
+  margin-top: 250px;
+  padding: 0px 10px;
+  display: flex;
+}
+
+footer .logo img {
+  margin-right: 32px;
+  width: 67.5px;
+  height: 13.5px;
+}
