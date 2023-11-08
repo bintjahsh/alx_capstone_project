@@ -4,24 +4,14 @@
 
 > Web Stack - Fullstack
 
-# Project Overview
-
-This is a portfolio project overview for the ALX capstone project.
-The main objectives are:
-
-- An overview about myself
-- My projects and a description of the functionality of the projects
-- The skills that I have accrued throughout my time as a developer
-- Contact information
-
 ## Description :bulb:
 
 - Advanced HTML/CSS
 - CSS
-- Flask
 - Advanced Javascript
 - Nodejs
-- Python
+- Git
+- Local storage
 
 ## Technologies & Tools:computer:
 
