@@ -14,7 +14,7 @@ The main objectives are:
 - The skills that I have accrued throughout my time as a developer
 - Contact information
 
-## Description:bulb:
+## Description :bulb:
 
 - Advanced HTML/CSS
 - CSS
@@ -38,33 +38,21 @@ The main objectives are:
 
 ## Features & Functionality
 
-- [About](#about)
-- [Projects](#projects)
-- [Skills](#skills)
-- [Contact](#contact)
-
-## Project Screenshot
-
-<table>
-<tr>
-<td valign="top" width="50%">
-![figma file](images/dashboard.jpg)
-![figma file](images/new task.jpg)
-</td>
-
-<td valign="top" width="50%">
-
-</td>
-</tr>
-</table>
+- Dashboard
+- Add New Task
+- Edit Task
+- Delete Task
 
 ## Project Workflow & flowchart
 
 The project in development is a task manager web app, which has the following main objectives:
 
-- Design and implement a visually appealing and user-friendly website layout.
-- Include sections for an “about me”, skills, projects, and contact information.
-- Display your projects with brief descriptions, images, and links to live demos or source code repositories.
+- A responsive user interface for creating, editing, and deleting tasks using HTML and CSS.
+- Task management functionality, such as adding new tasks, marking tasks as complete, and deleting tasks.
+- Implement data storage for tasks using local storage
+- Features like task categorization, due dates, and priority levels.
+- Search and filtering options to help users find specific tasks.
+- Reminder functionality to set reminders or notifications for important tasks.
 
 <table>
 <tr>
@@ -78,17 +66,22 @@ The project in development is a task manager web app, which has the following ma
 </tr>
 </table>
 
-## Design of the prototype
+## Project Screenshot
 
-Here is the high fidelity prototype of the portfolio website:
+Here are some screens from the high fidelity prototype of the Taska web app:
+
+![figma file](images/dashboard.jpg)
+![figma file](images/newtask.jpg)
 
 <table>
 <tr>
 <td valign="top" width="50%">
 
-## Roadmap and future enhancements
+## Roadmap and Future enhancements
 
-- I plan to rewrite this project in Typescript very soon
+- I plan to rewrite this project in Typescript to include:
+  - Functionality to add tasks to Google Calendar
+  - Functionality to handle several different user profiles
 
 ## Author
 
