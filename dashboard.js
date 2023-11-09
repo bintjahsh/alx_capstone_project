@@ -2,11 +2,21 @@ if (typeof Storage !== "undefined") {
   let createTask;
   let taskItem;
   let viewPending;
+  let todayDate;
+  let sortBy;
+  let hamburgerBtn;
+  let navCloseBtn;
+  let navSidebar;
 
   window.addEventListener("DOMContentLoaded", () => {
     createTask = document.getElementById("createTask");
     taskItem = document.getElementById("task-item");
     viewPending = document.getElementById("viewPending");
+    todayDate = document.getElementById("todayDate");
+    sortBy = document.getElementById("sortby");
+    hamburgerBtn = document.querySelector("button.hamburger");
+    navSidebar = document.querySelector("nav.nav-sidebar");
+    navCloseBtn = document.querySelector("button.close");
     if (createTask) {
       createTask.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -21,17 +31,33 @@ if (typeof Storage !== "undefined") {
     viewPending.addEventListener("click", () => {
       window.location.href = "pending.html";
     });
+    sortBy.addEventListener("change", (e) => {
+      const sortby = e.target.value;
+      if (sortby == "duedate") {
+        sortByDueDate();
+      } else {
+        sortByPriority();
+      }
+    });
+    hamburgerBtn.addEventListener("click", () => {
+      navSidebar.classList.add("open");
+    });
+    navCloseBtn.addEventListener("click", () => {
+      navSidebar.classList.remove("open");
+    });
     displayPendingTasks();
+    setTodayDate();
   });
 
   function setTaskinStorage(taskDB) {
-    /* Creates a new task in local storage */
+    /* Sets task database in local storage
+     */
     localStorage.setItem("taskDB", JSON.stringify(taskDB));
   }
 
   function getTaskFromStorage() {
-    /* Returns content of the taskDB stored in local storage.
-      If taskDB is empty, returns an empty object
+    /* Returns content of the task database stored in local storage.
+    If taskDB is empty, returns an empty list.
     */
     let taskDB = localStorage.getItem("taskDB");
     if (taskDB) {
@@ -40,29 +66,6 @@ if (typeof Storage !== "undefined") {
     } else {
       return [];
     }
-  }
-
-  function addTaskToDB() {
-    /* Adds a new taskBlock to list of pendingTasks
-     */
-    const taskDB = getTaskFromStorage();
-    let taskBlock = {};
-    const taskName = document.getElementById("taskName").value;
-    const taskDesc = document.getElementById("taskDesc").value;
-    const taskDate = document.getElementById("taskDueDate").value;
-    const taskTime = document.getElementById("taskDueTime").value;
-    const taskPriority = document.getElementById("taskPriority").value;
-    taskBlock["taskName"] = taskName;
-    taskBlock["taskDesc"] = taskDesc;
-    taskBlock["taskDate"] = taskDate;
-    taskBlock["taskTime"] = taskTime;
-    taskBlock["taskPriority"] = taskPriority;
-    taskBlock["completed"] = false;
-    taskBlock["taskId"] = taskDB.length + 1;
-    console.log("i am here");
-
-    taskDB.push(taskBlock);
-    setTaskinStorage(taskDB);
   }
 
   function displayTask() {
@@ -98,16 +101,33 @@ if (typeof Storage !== "undefined") {
     });
   }
 
-  function displayPendingTasks() {
-    const taskDB = getTaskFromStorage();
-    console.log(taskDB);
-    const pendingTasks = taskDB.filter((task) => task.completed == false);
-    console.log(pendingTasks);
+  function setTodayDate() {
+    /* Gets the current date and returns it in specified format.
+    The date is displayed at the top of the dashboard when the
+    window loads.
+    */
+    const date = new Date();
+    const weekday = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let today = weekday[date.getDay()];
+    let currentDate = `${today}, ${day}/${month}/${year}`;
+    todayDate.innerHTML = currentDate;
+  }
+
+  function appendToTable(taskList) {
     const taskContainer = document.getElementById("task-table");
-    while (taskContainer.firstChild) {
-      taskContainer.removeChild(taskContainer.firstChild);
-    }
-    pendingTasks.forEach((task) => {
+    taskList.forEach((task) => {
       const taskRow = document.createElement("tr");
       const taskNameCell = document.createElement("td");
       const taskPriorCell = document.createElement("td");
@@ -122,13 +142,15 @@ if (typeof Storage !== "undefined") {
       taskDueDate.setAttribute("class", "date-time");
 
       taskName.innerHTML = task.taskName;
-      taskPrior.innerHTML = task.taskPriority;
-      if (task.taskPriority == "high") {
-        taskPrior.style.color = "red";
-      } else if (task.taskPriority == "medium") {
+      if (task.taskPriority == 1) {
+        taskPrior.innerHTML = "Normal";
+        taskPrior.style.color = "blue";
+      } else if (task.taskPriority == 2) {
+        taskPrior.innerHTML = "Medium";
         taskPrior.style.color = "orange";
       } else {
-        taskPrior.style.color = "blue";
+        taskPrior.innerHTML = "High";
+        taskPrior.style.color = "red";
       }
 
       taskDueDate.innerHTML = `${task.taskDate} | ${task.taskTime}`;
@@ -140,6 +162,48 @@ if (typeof Storage !== "undefined") {
       taskRow.appendChild(taskDueDateCell);
       taskContainer.appendChild(taskRow);
     });
+  }
+
+  function displayPendingTasks() {
+    const taskDB = getTaskFromStorage();
+    const pendingTasks = taskDB.filter((task) => task.completed == false);
+    const taskContainer = document.getElementById("task-table");
+    while (taskContainer.firstChild) {
+      taskContainer.removeChild(taskContainer.firstChild);
+    }
+    appendToTable(pendingTasks);
+  }
+
+  function sortByDueDate() {
+    const taskDB = getTaskFromStorage();
+    const pendingTasks = taskDB.filter((task) => task.completed == false);
+    const sortedByDueDate = pendingTasks.sort((a, b) => {
+      let da = new Date(a.taskDate),
+        db = new Date(b.taskDate);
+      return da - db;
+    });
+
+    const taskContainer = document.getElementById("task-table");
+    while (taskContainer.firstChild) {
+      taskContainer.removeChild(taskContainer.firstChild);
+    }
+    appendToTable(sortedByDueDate);
+  }
+
+  function sortByPriority() {
+    const taskDB = getTaskFromStorage();
+    const pendingTasks = taskDB.filter((task) => task.completed == false);
+    const sortedByPriority = pendingTasks.sort((a, b) => {
+      let pa = a.taskPriority,
+        pb = b.taskPriority;
+      return pb - pa;
+    });
+
+    const taskContainer = document.getElementById("task-table");
+    while (taskContainer.firstChild) {
+      taskContainer.removeChild(taskContainer.firstChild);
+    }
+    appendToTable(sortedByPriority);
   }
 } else {
   alert(

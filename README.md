@@ -9,7 +9,7 @@
 - Advanced HTML/CSS
 - CSS
 - Advanced Javascript
-- Nodejs
+- Nodej/s
 - Git
 - Local storage
 

@@ -26,9 +26,7 @@ if (typeof Storage !== "undefined") {
 
   function displayPendingTasks() {
     const taskDB = getTaskFromStorage();
-    console.log(taskDB);
     const pendingTasks = taskDB.filter((task) => task.completed == false);
-    console.log(pendingTasks);
     const taskContainer = document.getElementById("task-container");
     while (taskContainer.firstChild) {
       taskContainer.removeChild(taskContainer.firstChild);
@@ -55,7 +53,14 @@ if (typeof Storage !== "undefined") {
       taskH2.innerHTML = task.taskName;
       taskDescription.innerHTML = task.taskDesc;
       taskDueDate.innerHTML = `Due by: <b>${task.taskDate}</b> at <b>${task.taskTime}</b>`;
-      taskPrior.innerHTML = task.taskPriority;
+      if (task.taskPriority == 1) {
+        taskPrior.innerHTML = "Normal";
+      } else if (task.taskPriority == 2) {
+        taskPrior.innerHTML = "Medium";
+      } else {
+        taskPrior.innerHTML = "High";
+      }
+
       editButton.innerHTML = "Edit";
       deleteButton.innerHTML = "Delete";
       deleteButton.addEventListener("click", () => {
@@ -87,8 +92,31 @@ if (typeof Storage !== "undefined") {
 
     function editTask(taskId) {
       window.location.href = `edit.html?taskId=${taskId}`;
-      console.log("going to edit");
     }
+  }
+
+  function setTodayDate() {
+    /* Gets the current date and returns it in specified format.
+    The date is displayed at the top of the dashboard when the
+    window loads.
+    */
+    const date = new Date();
+    const weekday = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let today = weekday[date.getDay()];
+    let currentDate = `${today}, ${day}/${month}/${year}`;
+    todayDate.innerHTML = currentDate;
   }
 } else {
   alert(
